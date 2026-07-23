@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:json": "vitest run --reporter=json --outputFile=test-results.json"
+    "test:json": "vitest run --reporter=json --outputFile=test-results.json",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "react": "^19.2.7",
