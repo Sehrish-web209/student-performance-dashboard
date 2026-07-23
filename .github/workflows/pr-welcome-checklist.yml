@@ -1,0 +1,40 @@
+name: PR Automation (Welcome & Checklist)
+on:
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/github-script@v9
+        with:
+          script: |
+            // Fetch user profile info
+            const userResponse = await github.rest.users.getByUsername({
+              username: context.actor
+            });
+
+            // Fallback to username if the full name profile field is empty
+            const fullName = userResponse.data.name || '';
+            const handle = context.actor;
+
+            const welcomeMessage = `
+            👋 **Welcome ${fullName.length > 0 ? fullName + ` (@${handle})` : `@${handle}` }! Thanks for submitting your assignment.**
+
+            ### 📋 Pre-Grading Checklist:
+            - [ ] All test cases pass locally on your machine.
+            - [ ] You have committed and pushed all necessary files.
+            - [ ] You did not edit any restricted files under \`.github/\`.
+
+            *Auto-Grader will process your submission shortly.*
+            `;
+
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: welcomeMessage
+            });

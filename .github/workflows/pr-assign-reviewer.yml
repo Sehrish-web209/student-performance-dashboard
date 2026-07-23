@@ -1,0 +1,30 @@
+name: PR Automation (Assign Reviewer)
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Assign Reviewer
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const reviewer = 'shaizCodes';
+            const prAuthor = context.payload.pull_request.user.login;
+
+            // Only request a review if the PR was opened by someone else (a student)
+            if (prAuthor !== reviewer) {
+              await github.rest.pulls.requestReviewers({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                reviewers: [reviewer]
+              });
+            } else {
+              console.log(`Skipping review request: PR author (@${prAuthor}) is the designated reviewer.`);
+            }
