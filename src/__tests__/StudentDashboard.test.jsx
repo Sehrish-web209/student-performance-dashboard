@@ -215,7 +215,7 @@ describe('StudentDashboard Component', () => {
   // =========================================================================
   // Delete by Roll No (findIndex + splice) & Last At-Risk Index (findLastIndex)
   // =========================================================================
-  describe('Student deletion by roll number (findIndex + splice)', () => {
+  describe('Student deletion by roll number (findIndex + findLastIndex + splice)', () => {
     it('should delete a student by roll number', () => {
       render(<StudentDashboard students={MOCK_STUDENTS} />);
 
@@ -279,7 +279,7 @@ describe('StudentDashboard Component', () => {
   // =========================================================================
   // Status Banners (some / every)
   // =========================================================================
-  describe('Status banners', () => {
+  describe('Status banners (some + every)', () => {
     describe('Low score warning banner (some)', () => {
       it('should display the warning banner when any student scores below 30 in a subject', () => {
         const mockStudents = [
@@ -390,7 +390,7 @@ describe('StudentDashboard Component', () => {
   // =========================================================================
   // Stack & Queue Operations (push, unshift, pop, shift)
   // =========================================================================
-  describe('Stack and queue operations (push / unshift / pop / shift)', () => {
+  describe('Stack and queue operations (push + pop + unshift + shift)', () => {
     it('should add a student to the end of the list using push', () => {
       render(<StudentDashboard students={MOCK_STUDENTS} />);
 

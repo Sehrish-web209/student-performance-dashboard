@@ -69,7 +69,7 @@ export default function StudentDashboard({students: studentList}) {
     setHighlightedStudent(lastA);
   };
 
-  // Task 4a: Delete by Roll No (findIndex + splice)
+  // Task 4: Delete by Roll No (findIndex + splice)
   const handleDeleteByRollNo = (e) => {
     e.preventDefault();
     const targetRoll = parseInt(deleteRollNo, 10);
@@ -86,7 +86,7 @@ export default function StudentDashboard({students: studentList}) {
     }
   };
 
-  // Task 4b: Find Last At-Risk Student Index (findLastIndex)
+  // Task 5: Find Last At-Risk Student Index (findLastIndex)
   const handleFindLastAtRiskIndex = () => {
     // TODO: Use students.findLastIndex() to find index of the last student with Chemistry < 40
     const index = -1; // Replace this line
@@ -97,45 +97,47 @@ export default function StudentDashboard({students: studentList}) {
     }
   };
 
-  // Task 5a: Class Warning Badge (some)
+  // Task 6a: Class Warning Badge (some)
   const checkHasFailingScores = () => {
     // TODO: Use students.some() to return true if ANY student has Math, Physics, or Chemistry < 30
     return false; // Replace this line
   };
 
-  // Task 5b: High Performing Banner (every)
+  // Task 6b: High Performing Banner (every)
   const checkIsHighPerformingClass = () => {
     // TODO: Use students.every() to return true if EVERY student has Grade "A" or "B+"
     return false; // Replace this line
   };
 
-  // Task 6: Class Analytics (reduce)
+  // Task 7a: Class Analytics (reduce)
   const getAverageMathScore = () => {
     if (students.length === 0) return 0;
     // TODO: Use students.reduce() to sum Math scores and calculate average
     const totalMath = 0; // Replace this line
     return (totalMath / students.length).toFixed(1);
   };
-
+  
+  // Task 7b: Class Analytics (reduce)
   const getAveragePhysicsScore = () => {
     if (students.length === 0) return 0;
     // TODO: Use students.reduce() to sum Physics scores and calculate average
     const totalPhysics = 0; // Replace this line
     return (totalPhysics / students.length).toFixed(1);
   };
-
+  
+  // Task 7c: Class Analytics (reduce)
   const getTotalAGrades = () => {
     // TODO: Use students.reduce() to count total number of students with Grade === "A"
     return 0; // Replace this line
   };
 
-  // Task 7: Honor Roll Top 3 Preview (slice)
+  // Task 8: Honor Roll Top 3 Preview (slice)
   const getTopThreeStudents = () => {
     // TODO: Use students.slice() to return a copy of the first 3 students
     return []; // Replace this line
   };
 
-  // Task 8a & 8c: Add New Student (push / unshift)
+  // Task 9a & 9c: Add New Student (push / unshift)
   const handleAddStudent = (e) => {
     e.preventDefault();
     // Create a new student array copy
@@ -164,7 +166,7 @@ export default function StudentDashboard({students: studentList}) {
     setIsPriority(false);
   };
 
-  // Task 8b: Remove Last Entry (pop)
+  // Task 9b: Remove Last Entry (pop)
   const handleRemoveLastStudent = () => {
     if (students.length === 0) return;
     const updatedList = [...students];
@@ -172,7 +174,7 @@ export default function StudentDashboard({students: studentList}) {
     setStudents(updatedList);
   };
 
-  // Task 8d: Process First Application (shift)
+  // Task 9d: Process First Application (shift)
   const handleRemoveFirstStudent = () => {
     if (students.length === 0) return;
     const updatedList = [...students];
@@ -180,7 +182,7 @@ export default function StudentDashboard({students: studentList}) {
     setStudents(updatedList);
   };
 
-  // Task 9: Card Remove Action (splice)
+  // Task 10: Card Remove Action (splice)
   const handleRemoveCardByIndex = (index) => {
     const updatedList = [...students];
     // TODO: Use updatedList.splice() to remove the student at the given index
