@@ -74,30 +74,30 @@ This project uses **Vitest** with V8 code coverage instrumentation.
 
 ### Run Tests in Watch Mode
 
-Use this during development to see live feedback as you complete each task:
+- Use this during development to see live feedback as you complete each task:
 
-```bash
-npm run test:watch
-```
+    ```bash
+    npm run test:watch
+    ```
 
 ### Run Tests with 100% Coverage Verification
 
-Before submitting, verify that all test cases pass with 100% coverage across all metrics:
+- Before submitting, verify that all test cases pass with 100% coverage across all metrics:
 
-```bash
-npm run coverage
-```
+    ```bash
+    npm run coverage
+    ```
 
-Your final coverage report in the terminal should look like this:
+- Your final coverage report in the terminal should look like this:
 
-```text
-----------------------|---------|----------|---------|---------|-------------------
-File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------------------|---------|----------|---------|---------|-------------------
-All files             |     100 |      100 |     100 |     100 |                   
- StudentDashboard.jsx |     100 |      100 |     100 |     100 |                   
-----------------------|---------|----------|---------|---------|-------------------
-```
+    ```text
+    ----------------------|---------|----------|---------|---------|-------------------
+    File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+    ----------------------|---------|----------|---------|---------|-------------------
+    All files             |     100 |      100 |     100 |     100 |                   
+     StudentDashboard.jsx |     100 |      100 |     100 |     100 |                   
+    ----------------------|---------|----------|---------|---------|-------------------
+    ```
 
 ## 📝 Assignment Tasks Overview
 
