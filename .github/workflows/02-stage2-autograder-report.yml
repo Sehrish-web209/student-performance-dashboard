@@ -57,7 +57,9 @@ jobs:
               for (const suite of testData.testResults) {
                 for (const test of suite.assertionResults) {
                   const icon = test.status === 'passed' ? '✅' : '❌';
-                  testRows += `| ${icon} | \`${test.title}\` | **${test.status.toUpperCase()}** |\n`;
+                  // Safely escape backticks and pipes in test names
+                  const safeTitle = test.title.replace(/`/g, '\\`').replace(/\|/g, '\\|');
+                  testRows += `| ${icon} | \`${safeTitle}\` | **${test.status.toUpperCase()}** |\n`;
                 }
               }
             }
