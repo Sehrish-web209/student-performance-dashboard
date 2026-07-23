@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import rawStudentData from './data/students-100.json';
 
-export default function StudentDashboard() {
+export default function StudentDashboard({students: studentList}) {
   // Main State
-  const [students, setStudents] = useState(rawStudentData);
+  const [students, setStudents] = useState(studentList);
 
   // UI Control States
   const [selectedGrade, setSelectedGrade] = useState('All');
