@@ -219,6 +219,7 @@ export default function StudentDashboard({students: studentList}) {
   const handleRemoveCardByIndex = (index) => {
     const updatedList = [...students];
     // TODO: Use updatedList.splice() to remove the student at the given index
+    updatedList.splice(index,1);
     setStudents(updatedList);
   };
 
