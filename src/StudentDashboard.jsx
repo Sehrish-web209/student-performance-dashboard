@@ -174,8 +174,10 @@ export default function StudentDashboard({students: studentList}) {
 
     if (isPriority) {
       // TODO: Use .unshift() to add newStudent to the START of updatedList
+      updatedList.unshift(newStudent);
     } else {
       // TODO: Use .push() to add newStudent to the END of updatedList
+      updatedList.push(newStudent);
     }
 
     setStudents(updatedList);
