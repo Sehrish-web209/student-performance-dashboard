@@ -202,6 +202,7 @@ export default function StudentDashboard({students: studentList}) {
     if (students.length === 0) return;
     const updatedList = [...students];
     // TODO: Use updatedList.pop() to remove the last student
+    updatedList.pop();
     setStudents(updatedList);
   };
 
@@ -210,6 +211,7 @@ export default function StudentDashboard({students: studentList}) {
     if (students.length === 0) return;
     const updatedList = [...students];
     // TODO: Use updatedList.shift() to remove the first student
+    updatedList.shift();
     setStudents(updatedList);
   };
 
