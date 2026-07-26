@@ -124,7 +124,9 @@ export default function StudentDashboard({students: studentList}) {
   // Task 6b: High Performing Banner (every)
   const checkIsHighPerformingClass = () => {
     // TODO: Use students.every() to return true if EVERY student has Grade "A" or "B+"
-    return false; // Replace this line
+    return students.every((student)=>{
+      return (student.Grade==="A" || student.Grade==="B+");
+    });
   };
 
   // Task 7a: Class Analytics (reduce)
