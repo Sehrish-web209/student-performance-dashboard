@@ -116,7 +116,9 @@ export default function StudentDashboard({students: studentList}) {
   // Task 6a: Class Warning Badge (some)
   const checkHasFailingScores = () => {
     // TODO: Use students.some() to return true if ANY student has Math, Physics, or Chemistry < 30
-    return false; // Replace this line
+    return students.some((student)=>{
+      return (student.Math < 30 || student.Physics < 30 || student.Chemistry < 30);
+    });
   };
 
   // Task 6b: High Performing Banner (every)
