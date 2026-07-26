@@ -84,11 +84,16 @@ export default function StudentDashboard({students: studentList}) {
     const targetRoll = parseInt(deleteRollNo, 10);
 
     // TODO 1: Use students.findIndex() to find the index of the student with targetRoll
-    const targetIndex = -1; // Replace this line
+    const targetIndex = students.findIndex((student)=>{
+      return student["Roll No."] === targetRoll
+    }); 
     if (targetIndex !== -1) {
       // TODO 2: Create a shallow copy of students state array
+      const updatedList = [...students];
       // TODO 3: Use .splice() on the copied array to remove 1 student at targetIndex
+      updatedList.splice(targetIndex,1);
       // TODO 4: Update state with setStudents()
+      setStudents(updatedList);
       setDeleteRollNo('');
     } else {
       alert("Student not found!");
