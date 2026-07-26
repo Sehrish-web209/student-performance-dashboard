@@ -163,7 +163,7 @@ export default function StudentDashboard({students: studentList}) {
   // Task 8: Honor Roll Top 3 Preview (slice)
   const getTopThreeStudents = () => {
     // TODO: Use students.slice() to return a copy of the first 3 students
-    return []; // Replace this line
+    return students.slice(0,3);
   };
 
   // Task 9a & 9c: Add New Student (push / unshift)
