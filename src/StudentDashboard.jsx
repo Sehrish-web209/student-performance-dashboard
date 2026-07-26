@@ -103,7 +103,9 @@ export default function StudentDashboard({students: studentList}) {
   // Task 5: Find Last At-Risk Student Index (findLastIndex)
   const handleFindLastAtRiskIndex = () => {
     // TODO: Use students.findLastIndex() to find index of the last student with Chemistry < 40
-    const index = -1; // Replace this line
+    const index = students.findLastIndex((student)=>{
+      return student.Chemistry < 40
+    });
     if (index !== -1) {
       alert(`Last at-risk student (Chemistry < 40) is at array index: ${index}`);
     } else {
