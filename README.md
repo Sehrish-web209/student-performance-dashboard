@@ -85,7 +85,7 @@ This project uses **Vitest** with V8 code coverage instrumentation.
 - Before submitting, verify that all test cases pass with 100% coverage across all metrics:
 
     ```bash
-    npm run coverage
+    npm run test:coverage
     ```
 
 - Your final coverage report in the terminal should look like this:
