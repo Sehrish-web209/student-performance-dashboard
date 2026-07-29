@@ -27,41 +27,31 @@ export default function StudentDashboard({students: studentList}) {
   const [isPriority, setIsPriority] = useState(false);
 
   // =========================================================================
-  // TASK HANDLERS (complete the code inside these functions)
+  // TASK HANDLERS 
   // =========================================================================
 
   // Task 1: Log Student Directory (forEach)
   const handleLogDirectory = () => {
     console.clear();
     console.log("=== STUDENT DIRECTORY ===");
-    // TODO: Use students.forEach() to log each student's name and roll number 
-    
     students.forEach((student) => {
       console.log(
         `${student["Student_Names"]} - Roll No: ${student["Roll No."]}`
       );
     });
-    
-    // Format: "<Student_Names> - Roll No: <Roll No.>"
-    // Example: Donald Contreras - Roll No: 524613
   };
 
   // Task 2: Filter by Grade (filter)
   const getFilteredStudents = () => {
     if (selectedGrade === 'All') return students;
-    // TODO: Use students.filter() to return students matching selectedGrade
-      return students.filter((student) => {
-      return student.Grade === selectedGrade;
-    }); // Replace this line
+    return students.filter((student) => student.Grade === selectedGrade); 
   };
 
   // Task 3a: Search Student by Roll No (find)
   const handleSearchByRollNo = (e) => {
     e.preventDefault();
     const targetRoll = parseInt(searchRollNo, 10);
-    
-    // TODO: Use students.find() to get the student object matching targetRoll
-    const result = students.find((student) => student["Roll No."]===targetRoll); // Replace this line
+    const result = students.find((student) => student["Roll No."]===targetRoll); 
     if(!result){
       alert("Student not found!");
     }
@@ -70,8 +60,7 @@ export default function StudentDashboard({students: studentList}) {
 
   // Task 3b: Find Last 'A' Student (findLast)
   const handleFindLastAStudent = () => {
-    // TODO: Use students.findLast() to find the last student with Grade === "A"
-    const lastA = students.findLast((student)=>student.Grade==="A");// Replace this line 
+    const lastA = students.findLast((student)=>student.Grade==="A");
     if(!lastA){
         alert("Student not found!");
     }
@@ -82,17 +71,10 @@ export default function StudentDashboard({students: studentList}) {
   const handleDeleteByRollNo = (e) => {
     e.preventDefault();
     const targetRoll = parseInt(deleteRollNo, 10);
-
-    // TODO 1: Use students.findIndex() to find the index of the student with targetRoll
-    const targetIndex = students.findIndex((student)=>{
-      return student["Roll No."] === targetRoll
-    }); 
+    const targetIndex = students.findIndex((student) => student["Roll No."] === targetRoll); 
     if (targetIndex !== -1) {
-      // TODO 2: Create a shallow copy of students state array
       const updatedList = [...students];
-      // TODO 3: Use .splice() on the copied array to remove 1 student at targetIndex
-      updatedList.splice(targetIndex,1);
-      // TODO 4: Update state with setStudents()
+     updatedList.splice(targetIndex,1);
       setStudents(updatedList);
       setDeleteRollNo('');
     } else {
@@ -102,10 +84,7 @@ export default function StudentDashboard({students: studentList}) {
 
   // Task 5: Find Last At-Risk Student Index (findLastIndex)
   const handleFindLastAtRiskIndex = () => {
-    // TODO: Use students.findLastIndex() to find index of the last student with Chemistry < 40
-    const index = students.findLastIndex((student)=>{
-      return student.Chemistry < 40
-    });
+    const index = students.findLastIndex((student) => student.Chemistry < 40);
     if (index !== -1) {
       alert(`Last at-risk student (Chemistry < 40) is at array index: ${index}`);
     } else {
@@ -115,68 +94,47 @@ export default function StudentDashboard({students: studentList}) {
 
   // Task 6a: Class Warning Badge (some)
   const checkHasFailingScores = () => {
-    // TODO: Use students.some() to return true if ANY student has Math, Physics, or Chemistry < 30
-    return students.some((student)=>{
-      return (student.Math < 30 || student.Physics < 30 || student.Chemistry < 30);
-    });
+    return students.some((student) => student.Math < 30 || student.Physics < 30 || student.Chemistry < 30);
   };
 
   // Task 6b: High Performing Banner (every)
   const checkIsHighPerformingClass = () => {
-    // TODO: Use students.every() to return true if EVERY student has Grade "A" or "B+"
-    return students.every((student)=>{
-      return (student.Grade==="A" || student.Grade==="B+");
-    });
+    return students.every((student)=>student.Grade==="A" || student.Grade==="B+");
   };
 
   // Task 7a: Class Analytics (reduce)
   const getAverageMathScore = () => {
     if (students.length === 0) return 0;
-    // TODO: Use students.reduce() to sum Math scores and calculate average
-    const totalMath = students.reduce((totalMath,student)=>{
-      return totalMath=totalMath+student.Math;
-    }, 0);
+    const totalMath = students.reduce((totalMath,student) => totalMath=totalMath+student.Math, 0);
     return (totalMath / students.length).toFixed(1);
   };
-  
   // Task 7b: Class Analytics (reduce)
   const getAveragePhysicsScore = () => {
     if (students.length === 0) return 0;
-    // TODO: Use students.reduce() to sum Physics scores and calculate average
-    const totalPhysics = students.reduce((totalPhysics,student)=>{
-      return totalPhysics+student.Physics;
-    }, 0); 
+    const totalPhysics = students.reduce((totalPhysics,student) => totalPhysics+student.Physics, 0); 
     return (totalPhysics / students.length).toFixed(1);
   };
   
   // Task 7c: Class Analytics (reduce)
   const getTotalAGrades = () => {
-    // TODO: Use students.reduce() to count total number of students with Grade === "A"
     return students.reduce((totalStudents,student)=>{
-      if (student.Grade==="A"){
-        return totalStudents+1;
-      }
+      if (student.Grade==="A") return totalStudents+1;
       return totalStudents;
     },0); 
   };
 
   // Task 8: Honor Roll Top 3 Preview (slice)
   const getTopThreeStudents = () => {
-    // TODO: Use students.slice() to return a copy of the first 3 students
     return students.slice(0,3);
   };
 
   // Task 9a & 9c: Add New Student (push / unshift)
   const handleAddStudent = (e) => {
     e.preventDefault();
-    // Create a new student array copy
     const updatedList = [...students];
-
     if (isPriority) {
-      // TODO: Use .unshift() to add newStudent to the START of updatedList
       updatedList.unshift(newStudent);
     } else {
-      // TODO: Use .push() to add newStudent to the END of updatedList
       updatedList.push(newStudent);
     }
 
@@ -201,7 +159,6 @@ export default function StudentDashboard({students: studentList}) {
   const handleRemoveLastStudent = () => {
     if (students.length === 0) return;
     const updatedList = [...students];
-    // TODO: Use updatedList.pop() to remove the last student
     updatedList.pop();
     setStudents(updatedList);
   };
@@ -210,7 +167,6 @@ export default function StudentDashboard({students: studentList}) {
   const handleRemoveFirstStudent = () => {
     if (students.length === 0) return;
     const updatedList = [...students];
-    // TODO: Use updatedList.shift() to remove the first student
     updatedList.shift();
     setStudents(updatedList);
   };
@@ -218,7 +174,6 @@ export default function StudentDashboard({students: studentList}) {
   // Task 10: Card Remove Action (splice)
   const handleRemoveCardByIndex = (index) => {
     const updatedList = [...students];
-    // TODO: Use updatedList.splice() to remove the student at the given index
     updatedList.splice(index,1);
     setStudents(updatedList);
   };
